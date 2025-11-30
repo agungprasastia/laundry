@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan - Admin Laundry</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>Admin Laundry Cepat & Bersih</header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="paket.html">Paket Laundry</a></li>
+                    <li><a href="pesanan.html">Data Pesanan</a></li>
+                    <li><a href="laporan.html" class="active">Laporan</a></li>
+                    <li><a href="login.html" onclick="return confirm('Keluar?')">Keluar</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="content">
+            <h1>Laporan Keuangan</h1>
+            
+            <div class="form-container">
+                <label>Filter Tanggal:</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="date"> <span>s/d</span> <input type="date">
+                    <button class="btn-small blue" style="height: 38px;">Tampilkan</button>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr><th>Tanggal</th><th>Keterangan</th><th>Pemasukan</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>2025-11-28</td><td>Total Transaksi (10 Nota)</td><td>Rp 450.000</td></tr>
+                    <tr><td>2025-11-29</td><td>Total Transaksi (8 Nota)</td><td>Rp 320.000</td></tr>
+                    <tr style="background:#eee; font-weight:bold;">
+                        <td colspan="2" style="text-align: right;">Total:</td>
+                        <td>Rp 770.000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <button onclick="window.print()" class="btn-small blue">Cetak Laporan (PDF)</button>
+        </section>
+    </div>
+</body>
+</html>

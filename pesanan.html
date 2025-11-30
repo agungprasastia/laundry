@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pesanan - Admin Laundry</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>Admin Laundry Cepat & Bersih</header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="paket.html">Paket Laundry</a></li>
+                    <li><a href="pesanan.html" class="active">Data Pesanan</a></li>
+                    <li><a href="laporan.html">Laporan</a></li>
+                    <li><a href="login.html" onclick="return confirm('Keluar?')">Keluar</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="content">
+            <h1>Data Pesanan Masuk</h1>
+            
+            <div style="margin-bottom: 20px;">
+                <input type="text" placeholder="Cari Pelanggan..." style="padding: 10px; width: 300px;">
+                <button class="btn-small blue" style="height: 38px;">Cari</button>
+            </div>
+
+            <table id="tabel-pesanan">
+                <thead>
+                    <tr>
+                        <th>Pelanggan</th>
+                        <th>Paket</th>
+                        <th>Berat/Qty</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ahmad Dhani</td>
+                        <td>Cuci Komplit</td>
+                        <td>5 Kg</td>
+                        <td>Rp 35.000</td>
+                        <td>
+                            <select class="status-select">
+                                <option value="Baru">Baru</option>
+                                <option value="Proses" selected>Proses</option>
+                                <option value="Selesai">Selesai</option>
+                                <option value="Diambil">Diambil</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn-small blue">Cetak</button>
+                            <button class="btn-small red" onclick="return confirm('Hapus pesanan ini?')">Hapus</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Maya Estianty</td>
+                        <td>Cuci Bedcover</td>
+                        <td>1 Pcs</td>
+                        <td>Rp 25.000</td>
+                        <td>
+                            <select class="status-select">
+                                <option value="Baru" selected>Baru</option>
+                                <option value="Proses">Proses</option>
+                                <option value="Selesai">Selesai</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn-small blue">Cetak</button>
+                            <button class="btn-small red" onclick="return confirm('Hapus pesanan ini?')">Hapus</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
