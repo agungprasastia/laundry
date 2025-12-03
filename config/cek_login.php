@@ -10,12 +10,11 @@ $login_admin = mysqli_query($conn, "SELECT * FROM admin WHERE username='$usernam
 $cek_admin = mysqli_num_rows($login_admin);
 
 if($cek_admin > 0){
-    // LOGIN SEBAGAI ADMIN
     $data = mysqli_fetch_array($login_admin);
     
     $_SESSION['username'] = $username;
-    $_SESSION['status'] = "login"; // Session Standar
-    $_SESSION['role'] = "admin";   // Pembeda Role
+    $_SESSION['status'] = "login"; 
+    $_SESSION['role'] = "admin";   
     
     header("location: ../pages/admin/dashboard.php"); 
 

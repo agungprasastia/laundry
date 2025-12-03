@@ -1,6 +1,5 @@
 <?php 
-include 'config/koneksi.php';
-include 'config/session_check.php';  // jika diperlukan 
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +27,10 @@ include 'config/session_check.php';  // jika diperlukan
             else if($_GET['pesan'] == "belum_login"){
                 echo "<div style='color:orange; margin-bottom:10px;'>Silakan login dulu.</div>";
             }
+            elseif($_GET['pesan'] == "session_expired"){
+                echo "<div style='color:orange;'>Sesi Anda telah habis. Silakan login kembali.</div>";
+            }
+            
         }
         ?>
         
