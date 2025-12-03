@@ -23,7 +23,7 @@ $id_saya = $_SESSION['id_pelanggan'];
     <nav class="navbar">
         <div class="logo">Laundry Kinclong</div>
         <ul class="nav-links">
-            <li><a href="../index.php">Beranda</a></li>
+            <li><a href="../../index.php">Beranda</a></li>
 
             <li><a href="user_dashboard.php" style="font-weight:bold; color: #007bff;">Dashboard</a></li>
 

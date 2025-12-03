@@ -1,5 +1,4 @@
 <?php 
-include '../config/session_check.php';
 include '../../config/koneksi.php';
 include 'layout_header.php';
 

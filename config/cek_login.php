@@ -1,41 +1,37 @@
 <?php 
 session_start();
-include 'koneksi.php'; 
+include 'koneksi.php';
 
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 
-// --- TAHAP 1: CEK TABEL ADMIN ---
-$login_admin = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username' AND password='$password'");
-$cek_admin = mysqli_num_rows($login_admin);
-
-if($cek_admin > 0){
-    $data = mysqli_fetch_array($login_admin);
-    
+// ADMIN
+$admin = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username' AND password='$password'");
+if(mysqli_num_rows($admin) > 0){
+    $_SESSION['status'] = "login";
+    $_SESSION['role'] = "admin";
     $_SESSION['username'] = $username;
-    $_SESSION['status'] = "login"; 
-    $_SESSION['role'] = "admin";   
     
-    header("location: ../pages/admin/dashboard.php"); 
-
-} else {
-    $login_user = mysqli_query($conn, "SELECT * FROM pelanggan WHERE username='$username' AND password='$password'");
-    $cek_user = mysqli_num_rows($login_user);
-    
-    if($cek_user > 0){
-        $data = mysqli_fetch_array($login_user);
-        
-        $_SESSION['username'] = $username;
-        $_SESSION['nama_pelanggan'] = $data['nama_lengkap'];
-        $_SESSION['id_pelanggan'] = $data['id_pelanggan'];
-        
-        $_SESSION['status'] = "login"; 
-        $_SESSION['role'] = "pelanggan";
-        
-    header("location: ../pages/user/user_dashboard.php"); 
-        
-    } else {
-        header("location: ../login.php?pesan=gagal");
-    }
+    header("Location: /pages/admin/dashboard.php");
+    exit;
 }
+
+// USER
+$user = mysqli_query($conn, "SELECT * FROM pelanggan WHERE username='$username' AND password='$password'");
+if(mysqli_num_rows($user) > 0){
+    $d = mysqli_fetch_assoc($user);
+
+    $_SESSION['status'] = "login";
+    $_SESSION['role'] = "pelanggan";
+    $_SESSION['username'] = $username;
+    $_SESSION['nama_pelanggan'] = $d['nama_lengkap'];
+    $_SESSION['id_pelanggan'] = $d['id_pelanggan'];
+
+    header("Location: /pages/user/user_dashboard.php");
+    exit;
+}
+
+// SALAH:
+header("Location: /login.php?pesan=gagal");
+exit;
 ?>

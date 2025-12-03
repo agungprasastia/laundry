@@ -2,11 +2,16 @@
 include '../../config/koneksi.php';
 include '../../config/session_check.php';
 
-// Halaman ini hanya boleh diakses pelanggan
 if(!isset($_SESSION['role']) || $_SESSION['role'] != 'pelanggan'){
     echo "<script>alert('Akses ditolak!'); window.location='../login.php';</script>";
     exit();
 }
+
+if (!isset($_GET['id'])) {
+    die("ID Pesanan tidak ditemukan.");
+}
+
+$id_pesanan = $_GET['id'];
 
 $q = mysqli_query($conn, "SELECT total_bayar FROM pesanan WHERE id_pesanan='$id_pesanan'");
 $d = mysqli_fetch_array($q);
