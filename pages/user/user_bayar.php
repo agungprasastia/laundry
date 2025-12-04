@@ -3,7 +3,7 @@ include '../../config/koneksi.php';
 include '../../config/session_check.php';
 
 if(!isset($_SESSION['role']) || $_SESSION['role'] != 'pelanggan'){
-    echo "<script>alert('Akses ditolak!'); window.location='../login.php';</script>";
+    echo "<script>alert('Akses ditolak!'); window.location='../../login.php';</script>";
     exit();
 }
 
@@ -23,7 +23,6 @@ $d = mysqli_fetch_array($q);
     <meta charset="UTF-8">
     <title>Pembayaran Laundry</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
-
 </head>
 <body class="login-page">
 

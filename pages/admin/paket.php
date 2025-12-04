@@ -29,10 +29,10 @@ include 'layout_header.php';
     </div>
 
     <h3>Daftar Paket</h3>
-    <table style="width: 100%; margin-top: 20px;">
+    <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
         <thead>
-            <tr>
-                <th>No</th>
+            <tr style="background:#007bff; color:white;">
+                <th style="padding:10px;">No</th>
                 <th>Nama Paket</th>
                 <th>Harga</th>
                 <th>Estimasi</th>
@@ -46,17 +46,17 @@ include 'layout_header.php';
             $data = mysqli_query($conn, "SELECT * FROM paket");
             while($d = mysqli_fetch_array($data)){
             ?>
-            <tr>
-                <td><?php echo $no++; ?></td>
-                <td><?php echo $d['nama_paket']; ?></td>
-                <td>Rp <?php echo number_format($d['harga']); ?></td>
-                <td><?php echo $d['estimasi']; ?></td>
+            <tr style="border-bottom:1px solid #ddd;">
+                <td style="padding:10px;"><?= $no++; ?></td>
+                <td><?= $d['nama_paket']; ?></td>
+                <td>Rp <?= number_format($d['harga']); ?></td>
+                <td><?= $d['estimasi']; ?></td>
                 <td>
-                    <img src="../../assets/img/<?php echo $d['foto']; ?>" width="80" style="border-radius:5px;">
+                    <img src="../../assets/img/<?= $d['foto']; ?>" width="80" style="border-radius:5px;">
                 </td>
                 <td>
-                    <a href="paket_edit.php?id=<?php echo $d['id_paket']; ?>" class="btn-small blue">Edit</a>
-                    <a href="paket_hapus.php?id=<?php echo $d['id_paket']; ?>&foto=<?php echo $d['foto']; ?>" 
+                    <a href="paket_edit.php?id=<?= $d['id_paket']; ?>" class="btn-small blue">Edit</a>
+                    <a href="paket_hapus.php?id=<?= $d['id_paket']; ?>&foto=<?= $d['foto']; ?>" 
                        class="btn-small red" 
                        onclick="return confirm('Yakin hapus data ini?')">Hapus</a>
                 </td>

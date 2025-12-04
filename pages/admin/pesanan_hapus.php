@@ -2,14 +2,16 @@
 include '../../config/koneksi.php';
 include '../../config/session_check.php';
 
-$id = $_GET['id'];
+$id = intval($_GET['id']);
 
 $cek_data = mysqli_query($conn, "SELECT bukti_bayar FROM pesanan WHERE id_pesanan='$id'");
 $data = mysqli_fetch_array($cek_data);
 $bukti_foto = $data['bukti_bayar'];
 
-if(!empty($bukti_foto) && file_exists("../assets/img/$bukti_foto")){
-    unlink("../../assets/img/$bukti_foto");
+$path_foto = "../../assets/img/$bukti_foto";
+
+if(!empty($bukti_foto) && file_exists($path_foto)){
+    unlink($path_foto);
 }
 
 $query = mysqli_query($conn, "DELETE FROM pesanan WHERE id_pesanan='$id'");

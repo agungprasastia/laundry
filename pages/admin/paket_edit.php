@@ -2,10 +2,8 @@
 include '../../config/koneksi.php';
 include 'layout_header.php';
 
-// Ambil ID dari URL
 $id = $_GET['id'];
 
-// Ambil data lama dari database untuk ditampilkan di form
 $query = mysqli_query($conn, "SELECT * FROM paket WHERE id_paket='$id'");
 $data = mysqli_fetch_array($query);
 ?>

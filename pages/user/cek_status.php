@@ -36,7 +36,7 @@ if(isset($_GET['id'])){
     if(mysqli_num_rows($query) > 0){
         $data = mysqli_fetch_assoc($query);
 ?>
-    <div style="background:#f9f9f9; padding:20px; border-radius:8px; border:1px solid #ddd;">
+    <div style="background:#f9f9f9; padding:20px; border-radius:8px; border:1px solid #ddd; text-align:left;">
         <p><strong>Nama Pelanggan:</strong> <?= $data['nama_pelanggan'] ?></p>
         <p><strong>Paket:</strong> <?= $data['nama_paket'] ?></p>
         <p><strong>Tanggal Masuk:</strong> <?= $data['tanggal'] ?></p>
@@ -51,7 +51,6 @@ if(isset($_GET['id'])){
 ?>
 
     <br>
-
     <a href="../../index.php">← Kembali ke Beranda</a>
 </div>
 

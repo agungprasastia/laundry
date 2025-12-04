@@ -5,18 +5,18 @@ include 'koneksi.php';
 $username = $_POST['username'];
 $password = md5($_POST['password']);
 
-// ADMIN
+// 1. CEK ADMIN
 $admin = mysqli_query($conn, "SELECT * FROM admin WHERE username='$username' AND password='$password'");
 if(mysqli_num_rows($admin) > 0){
     $_SESSION['status'] = "login";
     $_SESSION['role'] = "admin";
     $_SESSION['username'] = $username;
-    
-    header("Location: /pages/admin/dashboard.php");
+
+    header("Location: ../pages/admin/dashboard.php");
     exit;
 }
 
-// USER
+// 2. CEK USER
 $user = mysqli_query($conn, "SELECT * FROM pelanggan WHERE username='$username' AND password='$password'");
 if(mysqli_num_rows($user) > 0){
     $d = mysqli_fetch_assoc($user);
@@ -27,11 +27,11 @@ if(mysqli_num_rows($user) > 0){
     $_SESSION['nama_pelanggan'] = $d['nama_lengkap'];
     $_SESSION['id_pelanggan'] = $d['id_pelanggan'];
 
-    header("Location: /pages/user/user_dashboard.php");
+    header("Location: ../pages/user/user_dashboard.php");
     exit;
 }
 
-// SALAH:
-header("Location: /login.php?pesan=gagal");
+
+header("Location: ../login.php?pesan=gagal");
 exit;
 ?>

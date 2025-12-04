@@ -5,8 +5,11 @@ include '../../config/session_check.php';
 $id = intval($_GET['id']);
 $foto = $_GET['foto'];
 
-if(file_exists("../assets/img/$foto")){
-    unlink("../assets/img/$foto");
+// Path Gambar Fisik
+$path_foto = "../../assets/img/$foto";
+
+if(file_exists($path_foto)){
+    unlink($path_foto);
 }
 
 $query = mysqli_query($conn, "DELETE FROM paket WHERE id_paket='$id'");

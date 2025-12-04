@@ -2,7 +2,7 @@
 include '../../config/koneksi.php';
 include '../../config/session_check.php';
 
-if($_SESSION['role'] != "pelanggan"){ header("location:../login.php"); }
+if($_SESSION['role'] != "pelanggan"){ header("location:../../login.php"); }
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +11,6 @@ if($_SESSION['role'] != "pelanggan"){ header("location:../login.php"); }
     <meta charset="UTF-8">
     <title>Pesan Laundry Baru</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
-
 </head>
 <body class="login-page">
 

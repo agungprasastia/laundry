@@ -1,6 +1,12 @@
 <?php 
 include '../../config/session_check.php';
 include '../../config/koneksi.php';
+
+// Cek Role Admin 
+if($_SESSION['role'] != 'admin'){
+    header("Location: ../../login.php?pesan=denied");
+    exit;
+}
 ?>
 
 <?php include 'layout_header.php'; ?>
@@ -10,7 +16,7 @@ include '../../config/koneksi.php';
     <div class="dashboard-grid">
         <div class="stat-card blue">
             <h3>Selamat Datang</h3>
-            <div class="number"><?= $_SESSION['username']; ?></div>
+            <div class="number"><?= htmlspecialchars($_SESSION['username']); ?></div>
             <p>Admin Sistem</p>
         </div>
         <div class="stat-card green">

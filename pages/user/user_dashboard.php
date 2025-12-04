@@ -2,9 +2,8 @@
 include '../../config/koneksi.php';
 include '../../config/session_check.php';
 
-// Validasi role pelanggan
 if(!isset($_SESSION['role']) || $_SESSION['role'] != 'pelanggan'){
-    echo "<script>alert('Akses ditolak!'); window.location='../login.php';</script>";
+    echo "<script>alert('Akses ditolak!'); window.location='../../login.php';</script>";
     exit();
 }
 $id_saya = $_SESSION['id_pelanggan'];
@@ -16,7 +15,6 @@ $id_saya = $_SESSION['id_pelanggan'];
     <meta charset="UTF-8">
     <title>Dashboard Pelanggan</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
-
 </head>
 <body>
 
@@ -24,15 +22,12 @@ $id_saya = $_SESSION['id_pelanggan'];
         <div class="logo">Laundry Kinclong</div>
         <ul class="nav-links">
             <li><a href="../../index.php">Beranda</a></li>
-
             <li><a href="user_dashboard.php" style="font-weight:bold; color: #007bff;">Dashboard</a></li>
-
             <li><a href="../../logout.php" class="btn-login" style="background-color: #dc3545;">Keluar</a></li>
         </ul>
     </nav>
 
     <div class="container-public">
-        
         <div class="welcome-banner">
             <div>
                 <h2 style="margin:0;">Halo, <?php echo $_SESSION['nama_pelanggan']; ?>! 👋</h2>
@@ -64,12 +59,10 @@ $id_saya = $_SESSION['id_pelanggan'];
                 
                 if(mysqli_num_rows($query) > 0){
                     while($d = mysqli_fetch_array($query)){
-                        // Warna Status Cucian
                         $st_cuci = "bg-orange";
                         if($d['status']=="Proses") $st_cuci="bg-blue";
                         if($d['status']=="Selesai") $st_cuci="bg-green";
 
-                        // Warna Status Bayar
                         $st_bayar = "bg-red";
                         if($d['status_bayar']=="Menunggu Verifikasi") $st_bayar="bg-orange";
                         if($d['status_bayar']=="Lunas") $st_bayar="bg-green";
@@ -93,8 +86,10 @@ $id_saya = $_SESSION['id_pelanggan'];
                             <a href="user_bayar.php?id=<?php echo $d['id_pesanan']; ?>" class="btn-small blue">Bayar</a>
                         <?php } elseif($d['status_bayar'] == "Menunggu Verifikasi") { ?>
                             <small style="color:#fd7e14;">Cek Admin...</small>
-                        <?php } else { ?>
+                        <?php } elseif($d['status_bayar'] == "Lunas") { ?>
                             <small style="color:green;">✔ Selesai</small>
+                        <?php } else { ?>
+                            <small style="color:#ccc;">-</small>
                         <?php } ?>
                     </td>
                 </tr>
@@ -107,6 +102,5 @@ $id_saya = $_SESSION['id_pelanggan'];
             </tbody>
         </table>
     </div>
-
 </body>
 </html>

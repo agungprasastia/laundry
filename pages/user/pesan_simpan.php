@@ -1,6 +1,6 @@
 <?php
 include '../../config/koneksi.php';
-include '../../config/session_check.php';
+session_start();
 
 // Sanitasi data input
 $nama      = mysqli_real_escape_string($conn, $_POST['nama']);
@@ -34,7 +34,7 @@ if($query){
     // Jika tamu (guest):
     echo "<script>
         alert('Pesanan Berhasil! ID Pesanan Anda: $id_baru. Mohon disimpan!');
-        window.location='../cek_status.php?id=$id_baru';
+        window.location='cek_status.php?id=$id_baru';
     </script>";
     exit();
 

@@ -1,7 +1,3 @@
-<?php 
-include '../../config/session_check.php';
-include '../../config/koneksi.php';
-?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -21,7 +17,7 @@ include '../../config/koneksi.php';
                     <li><a href="paket.php">Paket Laundry</a></li>
                     <li><a href="pesanan.php">Data Pesanan</a></li>
                     <li><a href="laporan.php">Laporan</a></li>
-                    <li><a href="../../logout.php" onclick="return confirm('Keluar?')">Keluar</a></li>
+                    <li><a href="../logout.php" onclick="return confirm('Keluar?')">Keluar</a></li>
                 </ul>
             </nav>
         </aside>
