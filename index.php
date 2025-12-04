@@ -36,18 +36,9 @@ include 'config/koneksi.php';
 
 <header class="hero">
     <h1>Solusi Pakaian Bersih Tanpa Ribet</h1>
-    <p>Pesan online, kami jemput, cuci, dan antar kembali.</p>
+    <p>Daftar member sekarang, pesan online, kami jemput & antar.</p>
     <a href="#paket" class="cta-button">Lihat Paket</a>
 </header>
-
-<div class="track-box">
-    <h3>Lacak Cucian Anda</h3>
-
-    <form action="pages/user/cek_status.php" method="GET">
-        <input type="number" name="id" required placeholder="Masukkan ID Pesanan">
-        <button type="submit" class="btn-small blue">Lacak</button>
-    </form>
-</div>
 
 <section id="paket" class="container-public">
     <h2>Pilih Layanan Laundry</h2>

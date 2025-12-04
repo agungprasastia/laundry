@@ -1,8 +1,13 @@
 <?php 
 include '../../config/koneksi.php';
+session_start();
+
+if(!isset($_SESSION['status']) || $_SESSION['status'] != "login" || $_SESSION['role'] != "pelanggan"){
+    echo "<script>alert('Silakan Login terlebih dahulu untuk memesan!'); window.location='../../login.php';</script>";
+    exit();
+}
 
 $id_paket = isset($_GET['id']) ? $_GET['id'] : '';
-
 $q_paket = mysqli_query($conn, "SELECT * FROM paket WHERE id_paket='$id_paket'");
 $d_paket = mysqli_fetch_array($q_paket);
 ?>
@@ -17,8 +22,8 @@ $d_paket = mysqli_fetch_array($q_paket);
 </head>
 <body class="login-page"> 
     <div class="login-box" style="text-align: left;">
-        <h2 style="text-align: center; color:#28a745;">📝 Form Order</h2>
-        <p style="text-align: center; margin-bottom: 20px;">Lengkapi data untuk memesan layanan.</p>
+        <h2 style="text-align: center; color:#28a745;">Form Order</h2>
+        <p style="text-align: center; margin-bottom: 20px;">Halo, <b><?= $_SESSION['nama_pelanggan'] ?></b>!<br>Silakan lengkapi pesanan Anda.</p>
 
         <?php if($id_paket != "" && mysqli_num_rows($q_paket) > 0) { ?>
             
@@ -32,8 +37,8 @@ $d_paket = mysqli_fetch_array($q_paket);
                 <input type="hidden" name="id_paket" value="<?php echo $id_paket; ?>">
 
                 <div class="input-group">
-                    <label>Nama Anda (Pelanggan)</label>
-                    <input type="text" name="nama" placeholder="Masukkan nama lengkap" required>
+                    <label>Nama Pelanggan</label>
+                    <input type="text" value="<?= $_SESSION['nama_pelanggan']; ?>" readonly style="background:#eee;">
                 </div>
 
                 <div class="input-group">
