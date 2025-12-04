@@ -8,11 +8,9 @@ include 'layout_header.php';
     <h1>Laporan Keuangan</h1>
     
     <?php
-    // Default: Tanggal awal bulan ini s/d Hari ini
     $tgl_mulai   = date('Y-m-01');
     $tgl_selesai = date('Y-m-d');
 
-    // Jika user memfilter & tanggal tidak kosong, pakai tanggal dari user
     if(isset($_GET['tgl_mulai']) && !empty($_GET['tgl_mulai']) && isset($_GET['tgl_selesai']) && !empty($_GET['tgl_selesai'])){
         $tgl_mulai   = $_GET['tgl_mulai'];
         $tgl_selesai = $_GET['tgl_selesai'];
