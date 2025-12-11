@@ -2,6 +2,11 @@
 include '../../config/koneksi.php';
 include '../../config/session_check.php';
 include 'layout_header.php'; 
+
+if(!isset($_SESSION['role']) || $_SESSION['role'] != 'admin'){
+    echo "<script>alert('Akses ditolak!'); window.location='../../login.php';</script>";
+    exit();
+}
 ?>
 
 <section class="content">
